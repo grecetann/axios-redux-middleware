@@ -66,7 +66,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   // const [search, setSearch] = useState("");
   const { articles, filteredArticles, searchInput } = useSelector(
     (state) => state.article
@@ -86,6 +86,7 @@ const Dashboard = () => {
     dispatch(logoutUser());
   };
   useEffect(() => {
+    console.log("hii");
     dispatch(getArticles(page));
   }, [dispatch, page]);
   const scrollToEnd = () => {

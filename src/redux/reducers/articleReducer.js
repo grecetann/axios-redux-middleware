@@ -18,11 +18,15 @@ const initialState = {
 const articleReducer = (state = initialState, action) => {
   switch (action.type) {
     case ARTICLES:
+      console.log("helloo 1");
       return {
         ...state,
         loading: true,
+        articleError: null,
       };
+
     case ARTICLES_SUCCESS:
+      console.log("success");
       return {
         ...state,
         articles: [...state.articles, ...action.payload.data.response.docs],

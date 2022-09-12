@@ -7,13 +7,14 @@ export const getArticles = (page) => ({
     request: {
       url: `${ARTICLES_API}`,
       method: "GET",
+      authenticated: true,
       params: {
         page: page,
       },
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer $(token)`,
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   Authorization: `Bearer $(token)`,
+      // },
     },
   },
 });

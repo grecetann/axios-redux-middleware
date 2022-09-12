@@ -13,6 +13,7 @@ const middlewareConfig = {
       {
         success({ getState }, req) {
           const token = localStorage.getItem("token");
+          console.log(token);
           if (req && req.url !== LOGIN_API && req.headers && token) {
             req.headers.Authorization = `Bearer ${token}`;
           }

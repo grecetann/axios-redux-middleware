@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { useLocation } from "react-router-dom";
 import {
   Button,
   AppBar,
@@ -65,14 +65,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   // const [search, setSearch] = useState("");
   const { articles, filteredArticles, searchInput } = useSelector(
     (state) => state.article
   );
   const { accessToken } = useSelector((state) => state.auth);
-
+  const username = location.state.username;
   const searchHandler = (e) => {
     const searchQuery = e.target.value.toLowerCase();
     dispatch(searchArticles(searchQuery));
@@ -86,6 +87,7 @@ const Dashboard = () => {
     dispatch(logoutUser());
   };
   useEffect(() => {
+    console.log(username);
     console.log("hii");
     dispatch(getArticles(page));
   }, [dispatch, page]);

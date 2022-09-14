@@ -53,7 +53,10 @@ const Login = () => {
 
   useEffect(() => {
     if (loginStatus === "success") {
-      history.push("/dashboard");
+      history.push({
+        pathname: "/dashboard",
+        state: { username: "grece", password: "hsjaj" },
+      });
     } else if (loginStatus === "Failed") {
       alert("something wrong try again");
     }
@@ -99,7 +102,7 @@ const Login = () => {
                     </InputAdornment>
                   }
                 />
-                {/* {errors && <p> please enter username</p>} */}
+                {/* {!values.username && <p> please enter username</p>} */}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
